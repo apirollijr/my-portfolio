@@ -1,0 +1,38 @@
+/* layout.css */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;      /* vertically align logo and menu */
+  justify-content: space-between; /* space out logo and menu */
+}
+
+
+.site-header,
+.site-footer {
+  background-color: var(--dark-charcoal);
+  color: var(--white);
+  padding: 1rem 0;
+}
+
+.main-nav .nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+  margin-bottom: 1rem;
+}

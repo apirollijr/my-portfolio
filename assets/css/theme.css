@@ -1,0 +1,11 @@
+/* theme.css */
+/* Already using CSS variables in base.css, but this is where you'd customize themes */
+body.light-theme {
+  --dark-charcoal: #222;
+  --white: #fff;
+}
+
+body.dark-theme {
+  --dark-charcoal: #fff;
+  --white: #1D1D1D;
+}

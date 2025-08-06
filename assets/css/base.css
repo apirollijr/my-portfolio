@@ -1,0 +1,27 @@
+/* base.css */
+:root {
+  --dark-charcoal: #1D1D1D;
+  --burnt-orange: #D55000;
+  --sunset-orange: #F28C28;
+  --golden-amber: #FFA940;
+  --ash-gray: #888888;
+  --white: #FFFFFF;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--dark-charcoal);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--burnt-orange);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--sunset-orange);
+}

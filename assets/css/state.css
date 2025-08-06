@@ -1,0 +1,9 @@
+/* state.css */
+.is-hidden {
+  display: none !important;
+}
+
+.is-active {
+  font-weight: bold;
+  color: var(--sunset-orange);
+}
