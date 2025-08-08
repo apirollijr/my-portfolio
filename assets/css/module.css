@@ -1,7 +1,49 @@
 /* module.css */
+
+:root {
+  --dark-charcoal: #1D1D1D;
+  --burnt-orange: #D55000;
+  --sunset-orange: #F28C28;
+  --golden-amber: #FFA940;
+  --ash-gray: #888888;
+  --white: #FFFFFF;
+}
+
 .site-logo img {
   height: 50px;
 }
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-branding .site-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.site-branding .site-link:hover {
+  opacity: 0.85;
+}
+
+.site-logo img {
+  height: 50px;
+  display: block;
+}
+
+.site-name {
+  font-family: 'Plaster', system-ui;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var( --burnt-orange);
+  margin: 0;
+}
+
+
 
 .button {
   background-color: var(--burnt-orange);
@@ -18,7 +60,8 @@
   background-color: var(--sunset-orange);
 }
 
-.card, .project {
+.card,
+.project {
   background-color: var(--white);
   border: 1px solid var(--ash-gray);
   padding: 1.5rem;
@@ -27,7 +70,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* New styles for page content */
+/* === Page Content === */
 .page-content {
   background-color: var(--white);
   padding: 2rem;
@@ -39,9 +82,56 @@
 .page-content h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--dark-charcoal);
 }
+
 .page-content p {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--dark-charcoal);
+}
+
+/* === Project Cards Grid === */
+.project-grid.github-repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === GitHub Repo Cards === */
+.project-grid .github-repo {
+  background-color: var(--dark-charcoal);
+  color: var(--white) !important;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-grid .github-repo:hover {
+  transform: translateY(-5px);
+}
+
+/* === Headings in Orange === */
+.project-grid .github-repo h1,
+.project-grid .github-repo h2,
+.project-grid .github-repo h3,
+.project-grid .github-repo .project-title {
+  color: var(--burnt-orange) !important;
+  margin-top: 0;
+}
+
+/* === Force white font for everything else === */
+.project-grid .github-repo * {
+  color: var(--white) !important;
+}
+
+/* === Ensure links are styled too === */
+.project-grid .github-repo a {
+  color: var(--burnt-orange) !important;
+  text-decoration: none;
+}
+
+.project-grid .github-repo a:hover {
+  text-decoration: underline;
 }

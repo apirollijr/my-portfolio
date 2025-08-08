@@ -7,11 +7,15 @@
 <body <?php body_class(); ?>>
   <header class="site-header">
   <div class="container">
-    <div class="site-logo">
-      <a href="<?php echo esc_url(home_url('/')); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>" height="50">
-      </a>
-    </div>
+        <div class="site-branding">
+          <a href="<?php echo home_url(); ?>" class="site-link">
+            <div class="site-logo">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Site Logo" />
+            </div>
+            <div class="site-name">Anthony Pirolli Jr</div>
+          </a>
+        </div>
+
 
     <nav class="main-nav">
       <?php

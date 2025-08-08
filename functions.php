@@ -8,6 +8,7 @@ add_action('after_setup_theme', 'my_portfolio_setup');
 function my_portfolio_scripts() {
   $css_path = get_template_directory_uri() . '/assets/css/';
 
+  wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Plaster&display=swap', false);
   wp_enqueue_style('base', $css_path . 'base.css');
   wp_enqueue_style('layout', $css_path . 'layout.css');
   wp_enqueue_style('module', $css_path . 'module.css');
