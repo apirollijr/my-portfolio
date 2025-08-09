@@ -1,5 +1,6 @@
-/* module.css */
-
+/* =========================
+   Variables
+========================= */
 :root {
   --dark-charcoal: #1D1D1D;
   --burnt-orange: #D55000;
@@ -9,10 +10,19 @@
   --white: #FFFFFF;
 }
 
-.site-logo img {
-  height: 50px;
+/* Hide empty homepage main so it doesn’t leave a gap */
+.home-main:empty {
+  display: none;
 }
 
+/* Remove extra gap if main follows hero */
+.hero + .home-main {
+  margin-top: 0;
+}
+
+/* =========================
+   Header / Branding
+========================= */
 .site-branding {
   display: flex;
   align-items: center;
@@ -39,12 +49,13 @@
   font-family: 'Plaster', system-ui;
   font-size: 1.5rem;
   font-weight: 400;
-  color: var( --burnt-orange);
+  color: var(--burnt-orange);
   margin: 0;
 }
 
-
-
+/* =========================
+   Buttons
+========================= */
 .button {
   background-color: var(--burnt-orange);
   color: var(--white);
@@ -53,24 +64,41 @@
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .button:hover {
   background-color: var(--sunset-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(213, 80, 0, 0.35);
 }
 
+/* =========================
+   Cards / Projects
+========================= */
 .card,
 .project {
-  background-color: var(--white);
+  background-color: var(--dark-charcoal);
   border: 1px solid var(--ash-gray);
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: var(--white);
 }
 
-/* === Page Content === */
+.card h1,
+.card h2,
+.card h3,
+.project h1,
+.project h2,
+.project h3 {
+  color: var(--burnt-orange);
+}
+
+/* =========================
+   Page Content
+========================= */
 .page-content {
   background-color: var(--white);
   padding: 2rem;
@@ -91,14 +119,15 @@
   color: var(--dark-charcoal);
 }
 
-/* === Project Cards Grid === */
+/* =========================
+   Project Grid + GitHub Repo Cards
+========================= */
 .project-grid.github-repos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
-/* === GitHub Repo Cards === */
 .project-grid .github-repo {
   background-color: var(--dark-charcoal);
   color: var(--white) !important;
@@ -112,7 +141,6 @@
   transform: translateY(-5px);
 }
 
-/* === Headings in Orange === */
 .project-grid .github-repo h1,
 .project-grid .github-repo h2,
 .project-grid .github-repo h3,
@@ -121,12 +149,10 @@
   margin-top: 0;
 }
 
-/* === Force white font for everything else === */
 .project-grid .github-repo * {
   color: var(--white) !important;
 }
 
-/* === Ensure links are styled too === */
 .project-grid .github-repo a {
   color: var(--burnt-orange) !important;
   text-decoration: none;
@@ -136,14 +162,17 @@
   text-decoration: underline;
 }
 
-//* === HOMEPAGE HERO POLISH === */
+/* =========================
+   Homepage Hero
+========================= */
 .hero {
   position: relative;
   color: var(--white);
   padding: clamp(56px, 8vw, 120px) 0;
-  background: radial-gradient(1200px 600px at 90% -20%, rgba(213,80,0,.25), transparent 60%),
-              radial-gradient(900px 600px at -20% 120%, rgba(242,140,40,.20), transparent 60%),
-              linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
+  background:
+    radial-gradient(1200px 600px at 90% -20%, rgba(213, 80, 0, 0.25), transparent 60%),
+    radial-gradient(900px 600px at -20% 120%, rgba(242, 140, 40, 0.20), transparent 60%),
+    linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
   overflow: hidden;
 }
 
@@ -157,16 +186,16 @@
   grid-template-columns: 1fr;
 }
 
-/* Title + accent underline */
 .hero__title {
   margin: 0 0 14px;
   color: var(--burnt-orange);
   font-weight: 800;
   line-height: 1.05;
   font-size: clamp(32px, 5vw, 64px);
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   position: relative;
 }
+
 .hero__title::after {
   content: "";
   display: block;
@@ -175,19 +204,18 @@
   margin-top: 14px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--burnt-orange), var(--golden-amber));
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .hero__subtitle {
   margin: 0 0 28px;
   color: var(--white);
-  opacity: .92;
+  opacity: 0.92;
   font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.65;
   max-width: 60ch;
 }
 
-/* Button -> pill, subtle lift */
 .hero__button {
   display: inline-flex;
   align-items: center;
@@ -199,45 +227,230 @@
   padding: 12px 20px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(213,80,0,.35);
-  transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+  box-shadow: 0 10px 24px rgba(213, 80, 0, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
-.hero__button:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(213,80,0,.45); background: #e45a08; }
-.hero__button:active { transform: translateY(0); }
 
-/* Image card */
+.hero__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(213, 80, 0, 0.45);
+  background: #e45a08;
+}
+
+.hero__button:active {
+  transform: translateY(0);
+}
+
 .hero__media {
   display: grid;
   place-items: center;
 }
+
 .hero__image {
   width: min(420px, 90vw);
-  aspect-ratio: 4 / 5;              /* nice portrait look; change to 1/1 for square */
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 24px;
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 16px 40px rgba(0,0,0,.55),
-    0 0 0 10px rgba(255,255,255,.02) inset;
+    0 16px 40px rgba(0, 0, 0, 0.55),
+    0 0 0 10px rgba(255, 255, 255, 0.02) inset;
   background: #222;
 }
 
-/* Responsive: side-by-side on desktop */
 @media (min-width: 900px) {
   .hero__inner.container {
-    grid-template-columns: 1.25fr .9fr;
+    grid-template-columns: 1.25fr 0.9fr;
   }
-  .hero__subtitle { max-width: 56ch; }
+
+  .hero__subtitle {
+    max-width: 56ch;
+  }
 }
 
-/* Spacing for content after hero */
 .home-main.container {
   max-width: 1100px;
   margin: clamp(28px, 6vw, 64px) auto;
   padding-inline: 16px;
 }
 
-/* Ensure buttons are white text globally */
-.button { color: var(--white); }
-.hero__button { color: var(--white); }
-.hero__button:hover { background: var(--sunset-orange); }
+.button {
+  color: var(--white);
+}
+
+/* =========================
+   Layout Helper
+========================= */
+.container {
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+
+/* =========================
+   Contact Page
+========================= */
+.contact {
+  padding: clamp(56px, 7vw, 96px) 0 80px;
+}
+
+.contact__inner {
+  padding-inline: 16px;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.contact__title {
+  color: var(--burnt-orange);
+  font-weight: 800;
+  font-size: clamp(32px, 4.5vw, 56px);
+  margin: 0 0 8px;
+}
+
+.contact__tagline {
+  margin: 0 0 28px;
+  opacity: 0.9;
+}
+
+.contact__form {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.field > span {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  background: #161616;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 14px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--golden-amber);
+  box-shadow: 0 0 0 3px rgba(255, 169, 64, 0.18);
+}
+
+.is-invalid {
+  border-color: rgba(220, 53, 69, 0.75) !important;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 6px 0 18px;
+}
+
+.checkbox input {
+  transform: translateY(1px);
+}
+
+.contact__submit {
+  background: var(--burnt-orange);
+  color: var(--white);
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(213, 80, 0, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.contact__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(213, 80, 0, 0.45);
+  background: #e45a08;
+}
+
+.contact__aside .card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.contact__aside h2 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  color: var(--golden-amber);
+}
+
+.contact__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.map-embed {
+  aspect-ratio: 16/10;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Honeypot hidden */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ==== Project cards: dark background, white text, orange headings ==== */
+.github-repos .github-repo {
+  background: var(--dark-charcoal) !important;
+  color: var(--white) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35) !important;
+}
+
+.github-repos .github-repo h3,
+.github-repos .github-repo h3 a {
+  color: var(--burnt-orange) !important;
+  text-decoration: none !important;
+}
+
+.github-repos .github-repo p,
+.github-repos .github-repo li,
+.github-repos .github-repo span,
+.github-repos .github-repo .meta {
+  color: var(--white) !important;
+}
+
+.github-repos .github-repo a {
+  color: var(--white) !important;
+}
+
+.github-repos .github-repo a:hover {
+  color: var(--golden-amber) !important;
+  text-decoration: underline !important;
+}

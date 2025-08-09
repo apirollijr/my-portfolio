@@ -9,6 +9,7 @@
 }
 
 body {
+  background: #1D1D1D;
   background-color: var(--white);
   color: var(--dark-charcoal);
   font-family: Arial, sans-serif;

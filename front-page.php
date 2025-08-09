@@ -34,7 +34,7 @@ if (is_numeric($img_val)) {
   </div>
   <div class="hero__bg" aria-hidden="true"></div>
 </section>
-
+<?php if (have_posts()) : ?>
 <main class="home-main container">
   <?php
     // Your homepage content/loop here, or include template parts.
@@ -45,5 +45,5 @@ if (is_numeric($img_val)) {
     endif;
   ?>
 </main>
-
+<?php endif; ?>
 <?php get_footer(); ?>
