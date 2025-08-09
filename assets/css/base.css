@@ -1,28 +1,27 @@
 /* base.css */
-:root {
-  --dark-charcoal: #1D1D1D;
-  --burnt-orange: #D55000;
-  --sunset-orange: #F28C28;
-  --golden-amber: #FFA940;
-  --ash-gray: #888888;
-  --white: #FFFFFF;
+:root{
+  --dark-charcoal:#1D1D1D;
+  --burnt-orange:#D55000;
+  --sunset-orange:#F28C28;
+  --golden-amber:#FFA940;
+  --ash-gray:#888888;
+  --white:#FFFFFF;
 }
 
-body {
-  background: #1D1D1D;
-  background-color: var(--white);
-  color: var(--dark-charcoal);
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+html{ box-sizing:border-box; scrollbar-gutter:stable both-edges; }
+*,*::before,*::after{ box-sizing:inherit; }
+
+body{
+  margin:0;
+  color:var(--dark-charcoal);
+  background:var(--white); /* you said no dark page background */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Poppins", sans-serif;
+  line-height:1.6;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column; /* sticky footer support */
 }
 
-a {
-  color: var(--burnt-orange);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-  color: var(--sunset-orange);
-}
+img,svg,video{ max-width:100%; height:auto; display:block; }
+a{ color:var(--burnt-orange); text-decoration:none; transition:color .2s ease; }
+a:hover{ color:var(--sunset-orange); }

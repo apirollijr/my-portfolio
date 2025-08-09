@@ -9,6 +9,13 @@
 add_action('after_setup_theme', function () {
   add_theme_support('title-tag');
   add_theme_support('post-thumbnails');
+  add_theme_support('html5', ['search-form','comment-form','comment-list','gallery','caption','style','script']);
+  add_theme_support('custom-logo', ['height'=>80,'width'=>80,'flex-width'=>true,'flex-height'=>true]);
+
+  register_nav_menus([
+    'header-menu' => __('Header Menu', 'my-portfolio'),
+    'footer-menu' => __('Footer Menu', 'my-portfolio'),
+  ]);
 
   // Hard-cropped image size for the hero (square by default)
   add_image_size('hero_portrait', 840, 840, true);
@@ -26,29 +33,23 @@ add_action('wp_enqueue_scripts', function () {
     [],
     null
   );
+  
+    $base = get_template_directory_uri() . '/assets/css/';
+      wp_enqueue_style('my-portfolio-base',   $base . 'base.css',   [], filemtime(get_template_directory() . '/assets/css/base.css'));
+      wp_enqueue_style('my-portfolio-layout', $base . 'layout.css', ['my-portfolio-base'], filemtime(get_template_directory() . '/assets/css/layout.css'));
+      wp_enqueue_style('my-portfolio-module', $base . 'module.css', ['my-portfolio-layout'], filemtime(get_template_directory() . '/assets/css/module.css'));
+      wp_enqueue_style('my-portfolio-state',  $base . 'state.css',  ['my-portfolio-module'], filemtime(get_template_directory() . '/assets/css/state.css'));
+      wp_enqueue_style('my-portfolio-theme',  $base . 'theme.css',  ['my-portfolio-state'], filemtime(get_template_directory() . '/assets/css/theme.css'));
 
-  $base_uri = get_template_directory_uri() . '/assets/css/';
-  $base_dir = get_template_directory() . '/assets/css/';
-
-  // enqueue in order
-  $styles = [
-    'base'   => 'base.css',
-    'layout' => 'layout.css',
-    'module' => 'module.css',
-    'state'  => 'state.css',
-    'theme'  => 'theme.css',
-  ];
-
-  foreach ($styles as $handle => $file) {
-    $uri = $base_uri . $file;
-    $path = $base_dir . $file;
-
-    // use filemtime for cache-busting in dev; falls back to null if file missing
-    $ver = file_exists($path) ? filemtime($path) : null;
-
-    wp_enqueue_style("my-portfolio-$handle", $uri, [], $ver);
-  }
-});
+      // Mobile nav toggle
+      wp_enqueue_script(
+        'my-portfolio-nav',
+        get_template_directory_uri() . '/assets/js/nav.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/nav.js'),
+        true
+      );
+    });
 
 // =========================
 // HOMEPAGE HERO – Customizer

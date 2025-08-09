@@ -1,38 +1,97 @@
 /* layout.css */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem;
+.container{
+  max-width:1200px;
+  margin-inline:auto;
+  padding-inline:1rem;
 }
 
-.site-header .container {
-  display: flex;
-  align-items: center;      /* vertically align logo and menu */
-  justify-content: space-between; /* space out logo and menu */
+/* Keep header on top */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000; /* new */
+  border-bottom:1px solid #eee;
+  background:var(--white);
+}
+.site-header .container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding-block:0.75rem;
 }
 
-
-.site-header,
-.site-footer {
-  background-color: var(--dark-charcoal);
-  color: var(--white);
-  padding: 1rem 0;
+.site-branding .site-link{
+  display:flex; align-items:center; gap:0.75rem;
 }
 
-.main-nav .nav-menu {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
+.site-logo img{ height:44px; width:auto; }
+.site-name{ font-weight:700; font-size:1.125rem; font-family:"Poppins", system-ui, sans-serif; }
+
+.menu-toggle{
+  display:none;
+  background:none; border:0; padding:0.5rem; cursor:pointer;
+}
+.menu-toggle:focus{ outline:2px solid var(--golden-amber); outline-offset:2px; }
+.menu-toggle-bar{ display:block; width:26px; height:3px; margin:5px 0; background:var(--dark-charcoal); }
+
+.main-nav{ display:flex;  z-index:1001;  }
+.nav-menu{ list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; }
+.nav-menu a{ color:var(--dark-charcoal); font-weight:600; }
+.nav-menu a:hover{ color:var(--burnt-orange); }
+
+.site-footer{ margin-top:auto; padding-block:2rem; border-top:1px solid #eee; background:var(--white); }
+.footer-menu{ list-style:none; display:flex; justify-content:center; gap:1rem; padding:0; margin:0 0 0.75rem; }
+
+/* Overlay covers the page when menu is open */
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:1000; /* sits under .main-nav but over page */
 }
 
-.footer-menu {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0;
-  margin-bottom: 1rem;
+/* Content layout */
+main.container, .container > .page-content{ padding-block:1.5rem; }
+
+/* Project grid (used on Projects archive / shortcode output wrapper) */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.25rem;
 }
+@media (max-width:1024px){ .project-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .project-grid{ grid-template-columns:1fr; } }
+
+/* Mobile nav */
+@media (max-width: 900px){
+  .menu-toggle{ display:block; }
+
+  /* Make the menu a fixed slide-down panel */
+  .main-nav{
+    position:fixed;
+    left:0; right:0; top:56px; /* assume header ~56px tall */
+    max-height:calc(100dvh - 56px);
+    overflow:auto;
+    background:var(--white);
+    border-bottom:1px solid #eee;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+    transform:translateY(-10px);
+    opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+
+  .nav-menu{ flex-direction:column; gap:0; }
+  .nav-menu li{ border-top:1px solid #f2f2f2; }
+  .nav-menu a{ display:block; padding:0.95rem 1rem; }
+
+  body.nav-open .main-nav{
+    opacity:1; pointer-events:auto; transform:translateY(0);
+  }
+  body.nav-open{ overflow:hidden; }
+  body.nav-open .nav-overlay{ display:block; }
+}
+/* Utility */
+.mt-2{ margin-top:.5rem; }
+.mt-3{ margin-top:1rem; }
+.mt-4{ margin-top:1.5rem; }

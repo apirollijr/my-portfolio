@@ -56,44 +56,35 @@
 /* =========================
    Buttons
 ========================= */
-.button {
-  background-color: var(--burnt-orange);
-  color: var(--white);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.15s ease;
+.button, .btn, .wp-block-button__link{
+  background-color:var(--burnt-orange);
+  color:var(--white);
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+  display:inline-flex; align-items:center; gap:.5rem;
+  text-decoration:none;
 }
-
-.button:hover {
-  background-color: var(--sunset-orange);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(213, 80, 0, 0.35);
-}
-
+.button:hover, .btn:hover, .wp-block-button__link:hover{ opacity:.92; }
+.button:active, .btn:active, .wp-block-button__link:active{ transform:translateY(1px); }
 /* =========================
    Cards / Projects
 ========================= */
-.card,
-.project {
-  background-color: var(--dark-charcoal);
-  border: 1px solid var(--ash-gray);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  color: var(--white);
+/* Generic card */
+.card{
+  background:#121212;             /* dark card */
+  color:var(--white);
+  border-radius:12px;
+  padding:1rem;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
 }
 
-.card h1,
-.card h2,
-.card h3,
-.project h1,
-.project h2,
-.project h3 {
-  color: var(--burnt-orange);
+.card h3, .card h2, .card-title{
+  color:var(--burnt-orange);      /* orange heading */
+  margin-top:0;
 }
 
 /* =========================
@@ -165,6 +156,12 @@
 /* =========================
    Homepage Hero
 ========================= */
+
+/* Hero, headings, etc. */
+h1,h2,h3{ line-height:1.25; margin:0 0 .6rem; }
+h1{ font-size:clamp(1.6rem, 2vw + 1rem, 2.25rem); }
+h2{ font-size:clamp(1.25rem, 1vw + 1rem, 1.5rem); }
+
 .hero {
   position: relative;
   color: var(--white);
@@ -426,31 +423,30 @@
 }
 
 /* ==== Project cards: dark background, white text, orange headings ==== */
-.github-repos .github-repo {
-  background: var(--dark-charcoal) !important;
-  color: var(--white) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.35) !important;
+/* If your Projects page is powered by [github_repos] shortcode, style its cards */
+.github-repos, .project-grid{ /* container already handled in layout.css */ }
+.github-repos .github-repo{
+  background:#121212;
+  border-radius:12px;
+  padding:1rem;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
 }
-
 .github-repos .github-repo h3,
-.github-repos .github-repo h3 a {
-  color: var(--burnt-orange) !important;
-  text-decoration: none !important;
+.github-repos .github-repo h2,
+.github-repos .github-repo .title{
+  color:var(--burnt-orange);
 }
-
+.github-repos .github-repo,
 .github-repos .github-repo p,
 .github-repos .github-repo li,
 .github-repos .github-repo span,
-.github-repos .github-repo .meta {
-  color: var(--white) !important;
+.github-repos .github-repo .meta{
+  color:var(--white) !important;
 }
-
-.github-repos .github-repo a {
-  color: var(--white) !important;
+.github-repos .github-repo a{
+  color:var(--white) !important;
 }
-
-.github-repos .github-repo a:hover {
-  color: var(--golden-amber) !important;
-  text-decoration: underline !important;
+.github-repos .github-repo a:hover{
+  color:var(--golden-amber) !important;
+  text-decoration:underline !important;
 }
