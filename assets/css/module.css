@@ -135,3 +135,109 @@
 .project-grid .github-repo a:hover {
   text-decoration: underline;
 }
+
+//* === HOMEPAGE HERO POLISH === */
+.hero {
+  position: relative;
+  color: var(--white);
+  padding: clamp(56px, 8vw, 120px) 0;
+  background: radial-gradient(1200px 600px at 90% -20%, rgba(213,80,0,.25), transparent 60%),
+              radial-gradient(900px 600px at -20% 120%, rgba(242,140,40,.20), transparent 60%),
+              linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
+  overflow: hidden;
+}
+
+.hero__inner.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-inline: 16px;
+  display: grid;
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: 1fr;
+}
+
+/* Title + accent underline */
+.hero__title {
+  margin: 0 0 14px;
+  color: var(--burnt-orange);
+  font-weight: 800;
+  line-height: 1.05;
+  font-size: clamp(32px, 5vw, 64px);
+  letter-spacing: .2px;
+  position: relative;
+}
+.hero__title::after {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--burnt-orange), var(--golden-amber));
+  opacity: .9;
+}
+
+.hero__subtitle {
+  margin: 0 0 28px;
+  color: var(--white);
+  opacity: .92;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.65;
+  max-width: 60ch;
+}
+
+/* Button -> pill, subtle lift */
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--burnt-orange);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(213,80,0,.35);
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+}
+.hero__button:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(213,80,0,.45); background: #e45a08; }
+.hero__button:active { transform: translateY(0); }
+
+/* Image card */
+.hero__media {
+  display: grid;
+  place-items: center;
+}
+.hero__image {
+  width: min(420px, 90vw);
+  aspect-ratio: 4 / 5;              /* nice portrait look; change to 1/1 for square */
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,.55),
+    0 0 0 10px rgba(255,255,255,.02) inset;
+  background: #222;
+}
+
+/* Responsive: side-by-side on desktop */
+@media (min-width: 900px) {
+  .hero__inner.container {
+    grid-template-columns: 1.25fr .9fr;
+  }
+  .hero__subtitle { max-width: 56ch; }
+}
+
+/* Spacing for content after hero */
+.home-main.container {
+  max-width: 1100px;
+  margin: clamp(28px, 6vw, 64px) auto;
+  padding-inline: 16px;
+}
+
+/* Ensure buttons are white text globally */
+.button { color: var(--white); }
+.hero__button { color: var(--white); }
+.hero__button:hover { background: var(--sunset-orange); }
